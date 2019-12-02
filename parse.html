@@ -1,0 +1,40 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+	body{
+		margin:10px;
+	}
+	input{
+		width: 100%;
+		margin-bottom: 10px;
+		font-size: 2em;
+	}
+	.btn-first{
+		width: 100%;
+	}
+	.res{
+		display:none;
+		justify-content: space-around;
+		margin-top: 20px;
+		
+	}
+
+</style>
+
+
+	<input type="text" id="name" name="name" class="inp" placeholder="как назовем?" required="required"><br>
+	<input type="text" id="url" name="url" class="inp" placeholder="урл" required="required"><br>
+	<div class="btn btn-default btn-first" onclick="send_xml(this)">Отправить</div>	
+<div class="res">
+	<div class="count"></div>
+	<div class="xml"> </div>
+	<div class="json"> </div>
+	<div class="img_download"></div>
+</div>
+<div class="script"></div>
+<script src="js/js.js"></script>
