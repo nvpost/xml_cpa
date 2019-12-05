@@ -5,14 +5,12 @@ if(isset($_POST['url']) && !empty($_POST['url']) ){
 //Скачиваем файл по ссылке
 $url=$_POST['url'];
 $xml_name=$_POST['name'];
-
 $content=file_get_contents($url);
 file_put_contents('myXml.zip', $content);
 //echo('Файл получен / <br>'.$url.'<br>');
-
-
 //разархивируем в указанную категорию (т.к. мы не знаем имени файла а врхиве)
 $dir='myXml';
+
 $zip = new ZipArchive;
 if($zip->open('myXml.zip')===TRUE){
 	$zip->extractTo($dir);
@@ -38,8 +36,8 @@ $pidArray=array();
 $nameArray=array();
 //Собираем массив категорий
 foreach($cat->category as $i){
-	array_push($pidArray, (string)$i[parent_id]);
-	array_push($idArray, (string)$i[id]);
+	array_push($pidArray, (string)$i['parent_id']);
+	array_push($idArray, (string)$i['id']);
 	array_push($nameArray, (string)$i);
 
 };
@@ -49,7 +47,7 @@ foreach($cat->category as $i){
 foreach($cat->category as $i){
 	//Определяем изначальную позицию Родителя (представим что их не больше 4)
 	$index1=$index2=$index3=$index4=0;
-	$index1=array_search($i[parent_id], $idArray);
+	$index1=array_search($i['parent_id'], $idArray);
 	$str=(string)$i;
 	for($d=1; $d<5; $d++){
 		$in='index'.$d;
@@ -62,7 +60,7 @@ foreach($cat->category as $i){
 	$catRowTmp=array();
 	$catRowTmp=explode(' -> ', $str); //
 
-	array_push($catIndex, (string)$i[id]);
+	array_push($catIndex, (string)$i['id']);
 	array_push($catBlock, $catRowTmp);
 
 };
@@ -117,7 +115,7 @@ global $obj;
 	$catCount=0;
 	foreach($reversCatRow as $r){
 		$catStr.=" - ".$r;
-		$i->addChild('category'.$catCount, $r);
+		$i->addChild('category'.$catCount, htmlspecialchars($r));
 		$catCount++;
 	}
 	//echo $name.' Категория: '.$catStr.'<br>';

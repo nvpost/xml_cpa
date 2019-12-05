@@ -9,7 +9,7 @@
 	body{
 		margin:10px;
 	}
-	input{
+	input.inp{
 		width: 100%;
 		margin-bottom: 10px;
 		font-size: 2em;
@@ -23,13 +23,17 @@
 		margin-top: 20px;
 		
 	}
+	.adm_gde{
+		font-size: 18px;
+	}
+	
 
 </style>
 
-
 	<input type="text" id="name" name="name" class="inp" placeholder="как назовем?" required="required"><br>
 	<input type="text" id="url" name="url" class="inp" placeholder="урл" required="required"><br>
-	<div class="btn btn-default btn-first" onclick="send_xml(this)">Отправить</div>	
+	<input type="checkbox" name="adm_gde" id="adm_gde" value="adm"> Admitad<br>
+	<div class="btn btn-default btn-first" onclick="send_xml(this)">Отправить</div>
 <div class="res">
 	<div class="count"></div>
 	<div class="xml"> </div>

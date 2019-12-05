@@ -2,13 +2,21 @@ var json_mes
 function send_xml(e){
     var name=$('#name').val()
     var url=$('#url').val()
+	var adm=$('#adm').val()
+	var php_url = 'http://localhost/xml/xml.php'	
+	if($('#adm_gde').prop('checked')){
+		php_url='http://localhost/xml/admitad_xml.php'
+	}
+
     data={'name':name, 'url':url}
-    startParse(data)
+    startParse(php_url, data)
+	console.log(data)
+	console.log(url)
 }
-function startParse(data){
+function startParse(php_url, data){
     $.ajax({
         type: 'POST',
-        url: 'http://localhost/xml/xml.php',
+        url: php_url,
         data: data,
         success: function(msg){
             json_mes=JSON.parse(msg)
