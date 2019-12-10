@@ -7,7 +7,7 @@ $myXml=$_POST['url'];
 $xml_name=$_POST['name'];
 
 
-$myXml=$dir.'/'.$tmp_xml_name;
+//$myXml=$dir.'/'.$tmp_xml_name;
 $xml=simplexml_load_file($myXml);
 $cat=$xml->shop->categories;
 
@@ -105,8 +105,12 @@ global $obj;
 	$img_path=$im_dir."/".$imgName.'.jpg';
 	
 	//$obj_row=array('in'=>"http:".$origPicUrl, 'out'=>$imgName.'.jpg');
-
-	$origPicUrl="http:".$origPicUrl;
+	/*
+	if(!preg_match("/http:/", $origPicUrl)){
+		$origPicUrl="http:".$origPicUrl;
+	}
+	*/
+	//$origPicUrl="http:".$origPicUrl;
 	$imgName=$imgName.".jpg";
 	$obj_row=$origPicUrl." ^%^ ".$imgName;
 	//array_push($obj, $obj_row);
@@ -132,10 +136,10 @@ else{
 //тут мы собственно название картинки переводим
 //в данном случае для xml (хотя нужно подумать, насчет перенести это в imgDown.php (вместе с переназываением) $i->addChild('ownImg', $name);)
 
-unlink($dir."/".$tmp_xml_name);
-rmdir($dir);
+//unlink($dir."/".$tmp_xml_name);
+//rmdir($dir);
 $file = 'xml.xml';
-unlink('myXml.zip'); //удаляем архив
+//unlink('myXml.zip'); //удаляем архив
 //echo "<div style='position: absolute; left: 300px; top: 150px; width: 300px; height: 300px; padding: 100px; background-color: white'><a href='".$file."'>Скачать файл</a></div>";
 //$answ_obj=(array)$answ;
 //print_r($answ_obj);
